@@ -1,0 +1,38 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Model.Services>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout .cshtml";
+}
+
+<h2>Services</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>Service</th>
+            <th>Service Description</th>
+            <th>Image URL</th>
+            <th>Edits</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+               
+                <td>@item.ServiceName</td>
+                <td> @item.Description</td>
+                <td><img width="100" height="100" src="@item.ImageURL"/></td>
+                <td><a href="/Services/Edit/@item.ServiceID">Edit</a> | <a href="/Services/Delete/@item.ServiceID">Delete</a></td>
+            </tr>
+        }
+       
+     
+        </tr>
+    </tbody>
+</table>

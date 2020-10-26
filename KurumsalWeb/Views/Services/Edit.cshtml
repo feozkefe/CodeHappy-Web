@@ -1,0 +1,39 @@
+﻿@model KurumsalWeb.Models.Model.Services
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout .cshtml";
+}
+
+<h2>Edit Service</h2>
+
+<div class="form">
+   
+    <form class="form-validate form-horizontal" id="create" method="post" action="/Services/Edit/@Model.ServiceID" enctype="multipart/form-data">
+        <div class="form-group ">
+            <label for="cname" class="control-label col-lg-2">Service Name <span class="required">*</span></label>
+            <div class="col-lg-10">
+                <input class="form-control" id="ServiceName" name="ServiceName" minlength="5" type="text" required value="@Model.ServiceName" />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="cemail" class="control-label col-lg-2">Service Description <span class="required">*</span></label>
+            <div class="col-lg-10">
+                <input class="form-control " id="Description" type="text" name="Description" required value="@Model.Description" />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="curl" class="control-label col-lg-2">Image URL</label>
+            <div class="col-lg-10">
+                <input class="form-control " id="ImageURL" type="file" name="ImageURL" accept=".jpg,.png,.jpeg" />
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button class="btn btn-primary" type="submit">Save</button>
+                <button class="btn btn-default" type="button"><a href="/Services/Index">Cancel</a></button>
+            </div>
+        </div>
+    </form>
+</div>

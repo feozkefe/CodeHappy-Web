@@ -1,0 +1,14 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Model.Blog>
+
+@foreach (var item in Model)
+{
+    <li>
+        <div class="post-item clearfix">
+            <img src="@item.ImageURL" alt="@item.BlogName">
+            <h4><a href="/Home/BlogDetails/@item.BlogID">@item.BlogName</a></h4>
+        </div>
+    </li>
+}
+
+
+

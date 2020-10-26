@@ -1,0 +1,113 @@
+﻿@model KurumsalWeb.Models.Model.Blog
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout .cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken();
+
+    <div class="form-horizontal">
+            <h4>Blog</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.BlogID)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BlogName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.BlogName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.BlogName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BlogContent, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <textarea class="form-control" name="BlogContent" >@Model.BlogContent</textarea>
+                    @*@Html.EditorFor(model => model.BlogContent, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.BlogContent, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImageURL, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ImageURL, new { htmlAttributes = new { @class = "form-control" } })
+                    <input type="file" name="ImageURL" accept=".png,.jpg,.jpeg" class="form-control" />
+                    @Html.ValidationMessageFor(model => model.ImageURL, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CategoryID, "CategoryID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("CategoryID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+}
+
+@*<div class="form">
+
+    @using (Html.BeginForm("Edit", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken();
+        <div class="form-group ">
+            <label for="cname" class="control-label col-lg-2">Blog Name <span class="required">*</span></label>
+            <div class="col-lg-10">
+                <input class="form-control" id="BlogName" name="BlogName" minlength="5" type="text" required value="@Model.BlogName" />
+            </div>
+        </div>
+            <div class="form-group ">
+                <label for="cemail" class="control-label col-lg-2">Category <span class="required">*</span></label>
+                <div class="col-lg-10">
+                    @Html.DropDownList("CategoryID", null, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group ">
+                <label for="cemail" class="control-label col-lg-2">Content <span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <textarea class="ckeditor" name="Content">@Model.BlogContent</textarea>
+                </div>
+            </div>
+            <div class="form-group ">
+                <label for="curl" class="control-label col-lg-2">Current Img</label>
+                <div class="col-lg-10">
+                    <img src="@Model.ImageURL" width="150" height="100" />
+                </div>
+            </div>
+            <div class="form-group ">
+                <label for="curl" class="control-label col-lg-2">New Img </label>
+                <div class="col-lg-10">
+                    <input type="file" class="form-control " name="ImageURL" accept=".jpg,.png.,.jpeg" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                    <button class="btn btn-default" type="button"><a href="/Blog/Index">Cancel</a></button>
+                </div>
+            </div>
+    }
+</div>*@
+
+
+
+
+  
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

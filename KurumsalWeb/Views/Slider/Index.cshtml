@@ -1,0 +1,46 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Model.Slider>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout .cshtml";
+}
+
+<h2>Slider Control Page</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SliderName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageURL)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SliderName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+           <img src="@item.ImageURL" width="150" height="50"></img>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SliderID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SliderID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SliderID })
+        </td>
+    </tr>
+}
+
+</table>

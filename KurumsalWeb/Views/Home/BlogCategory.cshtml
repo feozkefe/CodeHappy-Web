@@ -1,0 +1,136 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<KurumsalWeb.Models.Model.Blog>
+
+@{
+    ViewBag.Title = "BlogCategory";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+
+<section class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Blog</h2>
+
+            <ol>
+                <li><a href="/Home/Index/">Home</a></li>
+                <li>Blog</li>
+            </ol>
+        </div>
+
+    </div>
+</section>
+
+<section class="blog" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-8 entries">
+
+                @foreach (var item in Model)
+            {
+                    <article class="entry">
+
+                        <div class="entry-img">
+                            <img src="@item.ImageURL" alt="@item.BlogName" class="img-fluid">
+                        </div>
+
+                        <h2 class="entry-title">
+                            <a href="/Home/BlogDetails/@item.BlogID">
+                                @item.BlogName
+                            </a>
+                        </h2>
+
+                        <div class="entry-meta">
+                            <ul>
+                                <li class="d-flex align-items-center">
+                                    <i class="icofont-user"></i> <a href="blog-single.html">
+                                        Team Code Happy
+                                    </a>
+                                </li>
+
+                                <li class="d-flex align-items-center">
+                                    <i class="icofont-rounded-right"></i> <a href="blog-single.html">
+                                        @item.Category.CategoryName
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="entry-content">
+                            <p>
+                                @Html.Raw(item.BlogContent.Substring(0, 300) + "...")
+                            </p>
+                            <div class="read-more">
+                                <a href="/Home/BlogDetails/@item.BlogID">Read More</a>
+                            </div>
+                        </div>
+
+                    </article><!-- End blog entry -->
+                }
+
+
+                <div class="blog-pagination">
+                    @Html.PagedListPager(Model, page => Url.Action("Blog", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                </div>
+
+            </div><!-- End blog entries list -->
+
+            <div class="col-lg-4">
+                <div class="sidebar">
+
+                    <h3 class="sidebar-title">Search</h3>
+                    <div class="sidebar-item search-form">
+                        <form action="">
+                            <input type="text">
+                            <button type="submit"><i class="icofont-search"></i></button>
+                        </form>
+                    </div><!-- End sidebar search formn-->
+
+                    <h3 class="sidebar-title">Categories</h3>
+                    <div class="sidebar-item categories">
+                        @{
+                            Html.RenderAction("CategoryPartial", "Home");
+                        }
+
+                    </div><!-- End sidebar categories-->
+
+                    <h3 class="sidebar-title">Recent Posts</h3>
+                    <div class="sidebar-item recent-posts">
+                        <ul>
+                            @{
+                                Html.RenderAction("RecentBlogs", "Home");
+                            }
+
+                        </ul>
+
+
+                    </div><!-- End sidebar recent posts-->
+
+                    <h3 class="sidebar-title">Tags</h3>
+                    <div class="sidebar-item tags">
+                        <ul>
+                            <li><a href="#">App</a></li>
+                            <li><a href="#">IT</a></li>
+                            <li><a href="#">Business</a></li>
+                            <li><a href="#">Data</a></li>
+                            <li><a href="#">Analysis</a></li>
+                            <li><a href="#">Design</a></li>
+                            <li><a href="#">Product</a></li>
+                            <li><a href="#">Marketing</a></li>
+                        </ul>
+
+                    </div><!-- End sidebar tags-->
+
+                </div><!-- End sidebar -->
+
+            </div><!-- End blog sidebar -->
+
+        </div><!-- End .row -->
+
+    </div><!-- End .container -->
+
+</section>

@@ -1,0 +1,8 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Model.Category>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li><a href="/Home/BlogCategory/@item.CategoryID">@item.CategoryName</a></li>
+    }   
+</ul>

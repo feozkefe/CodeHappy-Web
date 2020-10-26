@@ -1,0 +1,118 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Model.Services>
+
+@{
+    ViewBag.Title = "Services";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<section class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Services</h2>
+            <ol>
+                <li><a href="/Home/Index/">Home</a></li>
+                <li>Services</li>
+            </ol>
+        </div>
+
+    </div>
+</section>
+
+<section class="services">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
+                <div class="icon-box icon-box-pink">
+                    <div class="icon"><i class="bx bx-laptop"></i></div>
+                    <h4 class="title"><a href="">Web Development</a></h4>
+                    <p class="description">We provide "cross browser" coding in HTML5 / CSS3 languages, which is the newest web technology, in W3C standards and suitable for all current web browsers.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                <div class="icon-box icon-box-cyan">
+                    <div class="icon"><i class="bx bx-cool"></i></div>
+                    <h4 class="title"><a href="">Web Design</a></h4>
+                    <p class="description">Considering the current web design trends, we make original, relevant and creative web designs with a professional team.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box icon-box-green">
+                    <div class="icon"><i class="bx bx-file"></i></div>
+                    <h4 class="title"><a href="">Product Management</a></h4>
+                    <p class="description">Identifies profitable service space, packages services in a productized form and delivers the same to the market.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box icon-box-blue">
+                    <div class="icon"><i class="bx bx-data"></i></div>
+                    <h4 class="title"><a href="">Data Analysis</a></h4>
+                    <p class="description">In the data analysis process, from infrastructure studies for collecting detailed data about your visitors, to forecasting analysis using learning models.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section class="why-us section-bg" data-aos="fade-up" date-aos-delay="200">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6 video-box">
+                <img src="~/Content/SiteLayout/Moderna/assets/img/why-us.jpg" class="img-fluid" alt="">
+                <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+            </div>
+
+            <div class="col-lg-6 d-flex flex-column justify-content-center p-5">
+
+                <div class="icon-box">
+                    <div class="icon"><i class="bx bx-fingerprint"></i></div>
+                    <h4 class="title"><a href="">Take Your Company to the Top</a></h4>
+                    <p class="description">Reach your target audience faster with Google, Facebook, Instagram ads. It is time to grow your company and bring it to the top by promoting your brand and products.</p>
+                </div>
+
+                <div class="icon-box">
+                    <div class="icon"><i class="bx bx-gift"></i></div>
+                    <h4 class="title"><a href="">We add value to you</a></h4>
+                    <p class="description">Our company does not only provide you with a website or just an advertisement service, but also works by giving your company more returns.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="service-details">
+    <div class="container">
+
+        <div class="row"> 
+            @foreach (var item in Model)
+            {
+            <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+               
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="@item.ImageURL" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="#">@item.ServiceName</a></h5>
+                            <p class="card-text">@item.Description</p>
+                            <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> Read More</a></div>
+                        </div>
+                    </div>
+                    
+            </div>
+            }        
+        </div>
+
+    </div>
+</section>
